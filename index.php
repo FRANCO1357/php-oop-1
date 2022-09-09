@@ -41,19 +41,11 @@ $movie2_description = 'Con l\'aiuto di un cacciatore di taglie tedesco, uno schi
 $movie3_description = 'Fight Club è una storia che parla di alienazione, consumismo e alienazione causata dal consumismo, un vortice nel quale l’uomo moderno può facilmente rimanere invischiato se non equipaggiato per far fronte al proprio disagio interiore che, nel caso del protagonista del film, assume inaspettatamente la forma del disturbo da personalità multipla, spingendolo verso un baratro vendicativo del quale egli stesso finisce per rischiare seriamente di essere vittima.';
 
 
-$movie1 = new Movie(1, 'The Shawshank Redemption', $movie1_description, 1994, 'Frank Darabont', 5);
+$movie1 = new Movie(1, 'The Shawshank Redemption', $movie1_description, 1994, 'Frank Darabont', 4.6);
 $movie2 = new Movie(2, 'Django', $movie2_description, 2012, 'Quentin Tarantino', 4);
 $movie3 = new Movie(3, 'Fight Club', $movie3_description, 1999, 'David Fincher', 5);
 
-$film_age_1 = $movie1->getFilmAge();
-$film_age_2 = $movie2->getFilmAge();
-$film_age_3 = $movie3->getFilmAge();
-
-echo($film_age_1);
-echo($film_age_2);
-echo($film_age_3);
-
-echo $movie1->getAbstract();
+$movies = [$movie1, $movie2, $movie3]
 
 ?>
 
@@ -67,6 +59,15 @@ echo $movie1->getAbstract();
 </head>
 <body>
 
+    <?php foreach($movies as $movie) : ?>
+        <h3>ID: <?= $movie->id ?></h3>
+        <h2>Titolo: <?= $movie->title?></h2>
+        <p>Descrizione: <?= $movie->getAbstract()?></p>
+        <p>Anno: <?= $movie->year?></p>
+        <p>Il film è uscito da: <?= $movie->getFilmAge()?> anni</p>
+        <p>Diretto da: <?= $movie->movie_director?></p>
+        <strong>Valutazione degli utenti: <?= $movie->rating?> / 5</strong>
+    <?php endforeach; ?>
 
     
 </body>
