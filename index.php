@@ -30,6 +30,10 @@ class Movie
     public function getFilmAge(){
         return date("Y") - $this->year;
     }
+
+    public function getAbstract($max = 100){
+        return substr($this->description, 0, $max) . '...';
+    }
 }
 
 $movie1_description = 'Le ali della libertà è anche e soprattutto una rappresentazione accurata del concetto di speranza, di come un uomo innocente possa trovare il modo di sopravvivere all’idea che la sua vita gli sia stata rubata e che si ritrovi a pagare per un crimine che non ha commesso.';
@@ -48,6 +52,8 @@ $film_age_3 = $movie3->getFilmAge();
 echo($film_age_1);
 echo($film_age_2);
 echo($film_age_3);
+
+echo $movie1->getAbstract();
 
 ?>
 
